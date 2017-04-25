@@ -1,0 +1,40 @@
+{
+  "name": "api-pomelo",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "start": "node app.js",
+    "lint": "eslint src --ignore-pattern 'src/test'",
+    "doc": "apidoc -i app/servers/appHttp -o docs",
+    "build": "yarn run lint && yarn run doc"
+  },
+  "apidoc": {
+    "name": "API文档",
+    "version": "1.0.0",
+    "description": "网站的所有API文档",
+    "title": "API手册",
+    "url": "http://www.dlkj.com/"
+  },
+  "dependencies": {
+    "assert": "^1.4.1",
+    "body-parser": "^1.17.1",
+    "compression": "^1.6.2",
+    "crc": "^3.4.4",
+    "express": "^4.15.2",
+    "lodash": "^4.17.4",
+    "method-override": "^2.3.8",
+    "morgan": "^1.8.1",
+    "pomelo": "^2.2.5",
+    "socket.io": "^1.7.3"
+  },
+  "devDependencies": {
+    "apidoc": "^0.17.5",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "mocha": "^3.3.0",
+    "request": "^2.81.0",
+    "should": "^11.2.1",
+    "supertest": "^3.0.0"
+  }
+}

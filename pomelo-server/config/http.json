@@ -1,0 +1,18 @@
+{
+  "development": {
+    "gate": {
+      "host": "127.0.0.1", "port": 8001
+    },
+    "appHttp": {
+      "host": "127.0.0.1", "port": 8002
+    }
+  },
+  "production": {
+    "gate": {
+      "host": "127.0.0.1", "port": 8001
+    },
+    "appHttp": {
+      "host": "127.0.0.1", "port": 8002
+    }
+  }
+}
