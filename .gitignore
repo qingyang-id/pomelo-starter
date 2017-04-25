@@ -1,0 +1,17 @@
+.project
+*/node-log.log
+logs/*.log
+*.log
+!.gitignore
+game-server/node_modules/*
+web-server/node_modules/*
+.project
+.settings/
+**/*.svn
+*.svn
+*.swp
+*.sublime-project
+*.sublime-workspace
+
+# dev tool fields idea
+.idea
