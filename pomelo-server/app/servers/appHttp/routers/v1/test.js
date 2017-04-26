@@ -9,7 +9,7 @@
  */
 
 /**
- * @api {get} /test 测试接口
+ * @api {get} /v1/test 测试接口
  * @apiVersion 1.0.0
  * @apiName getTest
  * @apiGroup v1Test

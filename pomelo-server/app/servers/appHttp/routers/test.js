@@ -17,7 +17,7 @@
  * @apiParam {String} id 测试编号
  *
  * @apiExample {bash} 请求样例：
- *    curl -i https://www.dlkj.com/v1/test
+ *    curl -i https://www.dlkj.com/test
  *
  * @apiSuccess {Number} code 代码
  * @apiSuccess {String} msg 提示内容
@@ -27,16 +27,14 @@
  *    HTTP/1.1 200 OK
  *    {
  *       "code": 0,
- *       "name": "互动",
- *          "sort": 255,
- *          "status": -1
+ *       "msg": "http 测试接口",
  *    }
  *
  * @apiErrorExample 错误响应：
  *    HTTP/1.1 500
  *    {
- *      "errCode": "InvalidRoomId",
- *      "errDesc": "直播间id格式不正"
+ *       "code": 500,
+ *       "msg": "系统错误",
  *    }
  */
 module.exports = (app, http) => {
