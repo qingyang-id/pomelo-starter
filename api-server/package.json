@@ -1,7 +1,7 @@
 {
-  "name": "api-pomelo",
+  "name": "api-server",
   "version": "0.0.1",
-  "private": false,
+  "private": true,
   "scripts": {
     "move": "cp -f ../shared/pomelo/sioconnector.js  node_modules/pomelo/lib/connectors",
     "start": "node app.js",
