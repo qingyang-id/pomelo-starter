@@ -1,5 +1,12 @@
 # 网站RESTful API服务
+## 环境要求
 
+    `node` 版本为6.10.2
+    
+    `phython` (2.5 < version < 3.0)
+    
+    `pomelo` 版本为2.2.5 (https://github.com/NetEase/pomelo/wiki/Installation)
+    
 ## 如何查看API文档
 两种方式：
 
