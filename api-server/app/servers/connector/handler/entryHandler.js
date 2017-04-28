@@ -13,7 +13,6 @@ class Handler {
    */
   enter(msg, session, next) {
 		const self = this;
-		console.log('app.chat', self.app.chat)
 		const rid = msg.rid;
 		const uid = msg.username + '*' + rid;
 		const sessionService = self.app.get('sessionService');

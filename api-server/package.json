@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "move": "cp -f ../shared/pomelo/sioconnector.js  node_modules/pomelo/lib/connectors",
+    "fix": "cp -f ../shared/pomelo/sioconnector.js  node_modules/pomelo/lib/connectors",
     "start": "node app.js",
     "lint": "eslint src --ignore-pattern 'src/test'",
     "doc": "apidoc -i app/servers/appHttp -o docs",
@@ -25,6 +25,7 @@
     "express": "^4.15.2",
     "lodash": "^4.17.4",
     "method-override": "^2.3.8",
+    "mongoose": "^4.9.6",
     "morgan": "^1.8.1",
     "mysql": "^2.13.0",
     "pomelo": "^2.2.5",

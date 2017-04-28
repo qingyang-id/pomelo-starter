@@ -1,22 +1,23 @@
-const prod = require('./prod');
-const test = require('./test');
-const dev = require('./dev');
-const local = require('./local');
+/**
+ * @description 全局配置
+ * @author yq
+ * @date 2017/4/27 上午8:59
+ */
 
 let config;
 
 switch (process.env.NODE_ENV) {
   case 'production':
-    config = prod;
+    config = require('./dev');
     break;
   case 'test':
-    config = test;
+    config = require('./test');
     break;
   case 'development':
-    config = dev;
+    config = require('./prod');
     break;
   default:
-    config = local;
+    config = require('./dev');
 }
 
 module.exports = config;

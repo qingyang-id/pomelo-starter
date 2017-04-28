@@ -38,6 +38,7 @@ class Handler {
     });
   };
 }
+
 module.exports = (app) => {
 	return new Handler(app);
 };

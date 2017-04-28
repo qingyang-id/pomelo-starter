@@ -4,6 +4,8 @@ const httpPlugin = require('./app/lib/http');
 const path = require('path');
 const CourseService = require('./app/services/courseService');
 const NoticeService = require('./app/services/noticeService');
+const MysqlPool = require('./app/dao/mysql/mysqlPool');
+const errorHandler = require('./app/lib/middleware/errorHandler');
 /**
  * Init app for client.
  */
@@ -18,6 +20,8 @@ app.configure('production|development', 'appHttp', function(){
   app.use(httpPlugin, {
     http: app.get('httpConfig')['appHttp']
   });
+  httpPlugin.afterFilter(errorHandler);
+
 });
 
 app.configure('production|development', function() {
@@ -32,12 +36,22 @@ app.configure('production|development', function() {
 		heartbeatTimeout: 60 * 1000,
 		heartbeatInterval: 25 * 1000
 	});
+	// 加载配置信息
+  app.loadConfig('globalConfig', app.getBase() + '/config/global');
 	// filter configures
 	app.filter(pomelo.timeout());
 });
 
+// Configure database
+app.configure('production|development', 'user|chat|connector|master', function() {
+  app.set('dbClient', new MysqlPool(app).createMysqlPool('mysql'));
+});
+
 app.set('courseService', new CourseService(app));
 app.set('noticeService', new NoticeService(app));
+
+// app.set('errorHandler', errorHandler);
+
 
 // start app
 app.start();

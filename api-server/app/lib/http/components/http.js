@@ -90,8 +90,11 @@ class Http {
       //     msg: 'Not Found'
       //   });
       // });
+      console.error('error',111);
       self.http.use(errorHandler);
     });
+    console.error('error',111);
+    self.http.use(errorHandler);
 
     this.beforeFilters = require('../index').beforeFilters;
     this.afterFilters = require('../index').afterFilters;
