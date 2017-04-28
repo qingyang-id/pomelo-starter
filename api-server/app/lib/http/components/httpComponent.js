@@ -11,7 +11,7 @@ const compression = require('compression');
 const log4js = require('log4js');
 const errorHandler = require('../../middleware/errorHandler');
 const noCache = require('../../middleware/noCache');
-const FileUtil = require('../../../utils/fileUtil');
+// const FileUtil = require('../../../utils/fileUtil');
 const DEFAULT_HOST = '127.0.0.1';
 const DEFAULT_PORT = 8087;
 
@@ -90,11 +90,7 @@ class Http {
       //     msg: 'Not Found'
       //   });
       // });
-      console.error('error',111);
-      self.http.use(errorHandler);
     });
-    console.error('error',111);
-    self.http.use(errorHandler);
 
     this.beforeFilters = require('../index').beforeFilters;
     this.afterFilters = require('../index').afterFilters;
@@ -108,16 +104,18 @@ class Http {
     });
 
     const self = this;
-    const routesPath = path.join(this.app.getBase(), 'app/servers', this.app.getServerType(), 'routers');
-    assert.ok(fs.existsSync(routesPath), 'Cannot find route path: ' + routesPath);
-    const filePaths = [];
-    FileUtil.getAllFilePathSync(routesPath, filePaths);
-    filePaths.forEach((filePath) => {
-      if (/.js$/.test(filePath)) {
-        self.logger.info('加载路由路径---------', filePath);
-        require(filePath)(self.app, self.http, self);
-      }
-    });
+    const routePath = path.join(this.app.getBase(), 'app/servers', this.app.getServerType(), 'routers');
+    assert.ok(fs.existsSync(routePath), 'Cannot find route path: ' + routePath);
+    self.logger.info('加载路由路径---------', routePath);
+    require(routePath)(self.app, self.http, self);
+    // const filePaths = [];
+    // FileUtil.getAllFilePathSync(routesPath, filePaths);
+    // filePaths.forEach((filePath) => {
+    //   if (/.js$/.test(filePath)) {
+    //     self.logger.info('加载路由路径---------', filePath);
+    //     require(filePath)(self.app, self.http, self);
+    //   }
+    // });
   }
 
   start(cb) {

@@ -12,19 +12,15 @@ const errorHandler = require('./app/lib/middleware/errorHandler');
 const app = pomelo.createApp();
 app.set('name', 'api-pomelo');
 
-app.configure('production|development', 'appHttp', function(){
+app.configure('production|development', 'appHttp', () => {
   app.loadConfig('httpConfig', path.join(app.getBase(), 'config/http.json'));
-  console.log('ceshi--------', {
-    http: app.get('httpConfig')['appHttp']
-  });
   app.use(httpPlugin, {
-    http: app.get('httpConfig')['appHttp']
+    httpComponent: app.get('httpConfig')['appHttp']
   });
   httpPlugin.afterFilter(errorHandler);
-
 });
 
-app.configure('production|development', function() {
+app.configure('production|development', () => {
 	// route configures
 	app.route('chat', routeUtil.chat);
 	app.set('connectorConfig', {
@@ -43,7 +39,7 @@ app.configure('production|development', function() {
 });
 
 // Configure database
-app.configure('production|development', 'user|chat|connector|master', function() {
+app.configure('production|development', 'user|chat|connector|master', () => {
   app.set('dbClient', new MysqlPool(app).createMysqlPool('mysql'));
 });
 

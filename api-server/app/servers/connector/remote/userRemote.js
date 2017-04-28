@@ -3,13 +3,13 @@
  * @author yq
  * @date 2017/4/27 下午2:57
  */
-const AccountService = require('../../../services/accountService');
+const UserService = require('../../../services/userService');
 
-class AccountRemote {
+class UserRemote {
   constructor(app) {
     this.app = app;
     this.channelService = app.get('channelService');
-    this.accountService = new AccountService(app);
+    this.userService = new UserService(app);
   }
   /**
    * Register
@@ -20,7 +20,7 @@ class AccountRemote {
    *
    */
   register(username, password, cb) {
-    this.accountService.register({ username, password })
+    this.userService.register({ username, password })
       .then(() => cb())
       .catch(cb);
   };
@@ -33,12 +33,12 @@ class AccountRemote {
    *
    */
   login(username, password, cb) {
-    this.accountService.login({ username, password })
-      .then(() => cb())
+    this.userService.login({ username, password })
+      .then((result) => cb(null, result))
       .catch(cb);
   };
 }
 
 module.exports = (app) => {
-  return new AccountRemote(app);
+  return new UserRemote(app);
 };

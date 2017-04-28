@@ -1,17 +1,31 @@
 # 网站RESTful API服务
 ## 环境要求
 
-    `node` 版本为6.10.2
+    `mysql` 版本为(5.6 ~ 5.7.18)
     
-    `phython` (2.5 < version < 3.0)
+    `node` 版本为(6.0 ~ 6.10.2)
     
-    `pomelo` 版本为2.2.5 (https://github.com/NetEase/pomelo/wiki/Installation)
+    `phython` 版本为(2.5 < version < 3.0)
+    
+    `pomelo` 版本为2.2.5 
     
 ## 如何查看API文档
 两种方式：
 
 1. 执行yarn run doc生成文档页面，生成的文档在docs目录中，直接用浏览器打开里面的index.html即可，该方式只能看到公开API的文档；
 2. 查看代码中的注释，该方式可以看到所有文档，包括内部实现逻辑文档；
+
+## 准备工作
+### 1、安装mysql
+详见(https://www.mysql.com/downloads/)
+### 2、安装node
+详见（https://nodejs.org/en/）
+### 3、安装pomelo(需要安装依赖的环境，详见 https://github.com/NetEase/pomelo/wiki/Installation)
+```bash
+yarn add pomelo -g
+```
+### 4、新建数据库
+mysql数据库执行 api-server/doc/sxb_db.sql
 
 ## 启动项目
 ### 1、安装依赖

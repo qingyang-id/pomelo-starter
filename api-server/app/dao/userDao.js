@@ -49,7 +49,7 @@ function encrypt(password, salt) {
   });
 }
 
-class AccountDao {
+class UserDao {
 
 	constructor(app) {
 		this.app = app;
@@ -85,13 +85,14 @@ class AccountDao {
       })
       .then((password) => {
         // 添加用户
-        const sql = 'INSERT INTO t_account SET ?';
+        const sql = 'INSERT INTO t_users SET ?';
         const args = {
           id: CommonUtil.getObjectIdStr(),
           username: opts.username,
           password,
           salt,
-          register_time: new Date(),
+          update_time: new Date(),
+          create_time: new Date(),
         };
         return app.get('dbClient').queryAsync(sql, args);
       });
@@ -104,8 +105,9 @@ class AccountDao {
    */
   getByUsername(username) {
     const app = this.app;
-    return app.get('dbClient').queryAsync('SELECT username, password, salt FROM t_account WHERE username=?', username);
+    return app.get('dbClient').queryAsync('SELECT id, username, password, salt FROM t_users WHERE username=?', username)
+      .then(result => (result[0]));
   }
 }
 
-module.exports = AccountDao;
+module.exports = UserDao;

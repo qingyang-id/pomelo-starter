@@ -3,6 +3,23 @@
  * @author yq
  * @date 2017/4/27 上午10:17
  */
+const express = require('express');
+const UserController = require('../../controllers/userController');
+
+const router = express.Router();
+
+function init(userController) {
+  console.log(userController.app);
+  router.get('/rooms/token', (req, res) => {
+    console.log(app, http);
+    res.send({
+      code: 0,
+      msg: '测试接口'
+    })
+  });
+  router.post('/rooms/token', userController.login);
+  return router;
+}
 
 module.exports = (app, http) => {
   /**
@@ -38,10 +55,14 @@ module.exports = (app, http) => {
  *       "msg": "系统错误",
  *    }
    */
-  http.get('/v1/rooms/token', (req, res) => {
-    res.send({
-      code: 0,
-      msg: '测试接口'
-    })
-  });
+  // router.get('/rooms/token', (req, res) => {
+  //   console.log(app, http);
+  //   res.send({
+  //     code: 0,
+  //     msg: '测试接口'
+  //   })
+  // });
+  // router.post('/rooms/token', userController.login);
+  // return router;
+  return init(new UserController(app));
 };
