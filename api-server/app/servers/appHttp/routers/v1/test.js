@@ -38,6 +38,7 @@
  *    }
  */
 module.exports = (app, http) => {
+  console.log('\n\n\n', app, '\n\n\n');
   http.get('/v1/test', (req, res) => {
     res.send({
       code: 0,

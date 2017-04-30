@@ -3,9 +3,9 @@
  * @author yq
  * @date 2017/4/28 下午1:58
  */
-const dispatcher = require('../../../utils/dispatcher');
-const BaseResult = require('../../../lib/baseResult');
-const Code = require('../../../lib/code');
+const dispatcher = require('../utils/dispatcher');
+const BaseResult = require('../lib/baseResult');
+const Code = require('../lib/code');
 
 class UserController {
   constructor(app) {
@@ -19,17 +19,15 @@ class UserController {
    * @param next
    */
   register(req, res, next) {
-    const that = this;
     const username = req.body.username;
     const password = req.body.password;
-    console.error('\n\n\ncontroller', that, '\n\n\n');
     const connectors = this.app.getServersByType('connector');
     const connector = dispatcher.dispatch(username, connectors);
     this.app.rpcInvoke(connector.id, {
-      namespace : 'user',
-      service : 'userRemote',
-      method : 'register',
-      args : [
+      namespace: 'user',
+      service: 'userRemote',
+      method: 'register',
+      args: [
         username,
         password
       ]
@@ -48,15 +46,16 @@ class UserController {
    * @param next
    */
   login(req, res, next) {
+    console.log('\n\n\n~~~~~~~~', this, '~~~~~~~\n\n\n')
     const username = req.body.username;
     const password = req.body.password;
     const connectors = this.app.getServersByType('connector');
     const connector = dispatcher.dispatch(username, connectors);
     this.app.rpcInvoke(connector.id, {
-      namespace : 'user',
-      service : 'userRemote',
-      method : 'login',
-      args : [
+      namespace: 'user',
+      service: 'userRemote',
+      method: 'login',
+      args: [
         username,
         password
       ]

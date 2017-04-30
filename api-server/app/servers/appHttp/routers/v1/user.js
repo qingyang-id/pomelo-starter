@@ -3,7 +3,7 @@
  * @author yq
  * @date 2017/4/27 下午3:02
  */
-const UserController = require('../../controllers/userController');
+const UserController = require('../../../../controllers/userController');
 const express = require('express');
 
 class UserRouter {

@@ -3,10 +3,10 @@
  * @author yq
  * @date 2017/4/23 下午6:01
  */
-// const V1Router = require('./v1');
-const roomRouter = require('./v1/room');
+const UserController = require('../../../controllers/userController');
 
 module.exports = (app, http) => {
+  const userCtrl = new UserController(app);
   // v1版本路由
-  http.use('/v1', roomRouter(app, http));
+  http.post('/v1/token', userCtrl.login.bind(userCtrl));
 };
