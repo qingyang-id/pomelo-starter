@@ -14,12 +14,13 @@ class FileUtil {
    */
   static getAllFilePathSync(filePath, filePaths = []) {
     fs.readdirSync(filePath).forEach((fileName) => {
-      //filePath+"/"+filename不能用/直接连接，Unix系统是”/“，Windows系统是”\“
+      // filePath+"/"+filename不能用/直接连接，Unix系统是”/“，Windows系统是”\“
       const fullFilePath = path.join(filePath, fileName);
       if (fs.statSync(fullFilePath).isDirectory()) {
         return FileUtil.getAllFilePathSync(fullFilePath, filePaths);
       }
       filePaths.push(fullFilePath);
+      return null;
     });
   }
 }

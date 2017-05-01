@@ -22,12 +22,12 @@ class ChatRemote {
     };
     channel.pushMessage(param);
 
-    if(!!channel) {
+    if (channel) {
       channel.add(uid, sid);
     }
 
     cb(this.get(name, flag));
-  };
+  }
 
   /**
    * Get user from chat channel.
@@ -41,14 +41,14 @@ class ChatRemote {
   get(name, flag) {
     let users = [];
     const channel = this.channelService.getChannel(name, flag);
-    if(!!channel) {
+    if (channel) {
       users = channel.getMembers();
     }
-    for(let i = 0; i < users.length; i++) {
+    for (let i = 0; i < users.length; i += 1) {
       users[i] = users[i].split('*')[0];
     }
     return users;
-  };
+  }
 
   /**
    * Kick user out chat channel.
@@ -61,7 +61,7 @@ class ChatRemote {
   kick(uid, sid, name, cb) {
     const channel = this.channelService.getChannel(name, false);
     // leave channel
-    if(!!channel) {
+    if (channel) {
       channel.leave(uid, sid);
     }
     const username = uid.split('*')[0];
@@ -71,9 +71,29 @@ class ChatRemote {
     };
     channel.pushMessage(param);
     cb();
-  };
+  }
 }
+module.exports = function (app) {
+  const B = function () {};
+  B.prototype = ChatRemote.prototype;
 
-module.exports = (app) => {
-  return new ChatRemote(app);
+  const chatRemote = new B(app);
+  // Object.defineProperties(chatRemote, {
+  //   add: {
+  //     enumerable: true
+  //   },
+  //   get: {
+  //     enumerable: true
+  //   },
+  //   kick: {
+  //     enumerable: true
+  //   }
+  // });
+  // Object.defineProperties(chatRemote, 'get', {
+  //   enumerable: true
+  // });
+  // Object.defineProperties(chatRemote, 'kick', {
+  //   enumerable: true
+  // });
+  return chatRemote;
 };

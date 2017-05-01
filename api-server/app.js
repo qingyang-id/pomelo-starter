@@ -2,10 +2,9 @@ const pomelo = require('pomelo');
 const routeUtil = require('./app/utils/routeUtil');
 const httpPlugin = require('pomelo-http');
 const path = require('path');
-const CourseService = require('./app/services/courseService');
-const NoticeService = require('./app/services/noticeService');
-const MysqlPool = require('./app/dao/mysql/mysqlPool');
+const MysqlPool = require('./app/lib/mysqlPool');
 const errorHandler = require('./app/lib/middleware/errorHandler');
+const log = require('pomelo-logger').getLogger('app');
 /**
  * Init app for client.
  */
@@ -49,9 +48,6 @@ app.configure('production|development', 'user|chat|connector|master', () => {
   app.set('dbClient', new MysqlPool(app).createMysqlPool('mysql'));
 });
 
-app.set('courseService', new CourseService(app));
-app.set('noticeService', new NoticeService(app));
-
 // app.set('errorHandler', errorHandler);
 
 
@@ -59,5 +55,5 @@ app.set('noticeService', new NoticeService(app));
 app.start();
 
 process.on('uncaughtException', (err) => {
-  console.error(` Caught exception: ${err.stack}`);
+  log.error(` Caught exception: ${err.stack}`);
 });

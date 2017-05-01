@@ -3,7 +3,7 @@
 logs/*.log
 *.log
 !.gitignore
-game-server/node_modules/*
+api-server/node_modules/*
 web-server/node_modules/*
 .project
 .settings/

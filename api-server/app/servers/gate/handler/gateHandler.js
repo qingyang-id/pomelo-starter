@@ -15,7 +15,7 @@ class Handler {
    */
   queryEntry(msg, session, next) {
     const uid = msg.uid;
-    if(!uid) {
+    if (!uid) {
       next(null, {
         code: 500
       });
@@ -23,7 +23,7 @@ class Handler {
     }
     // get all connectors
     const connectors = this.app.getServersByType('connector');
-    if(!connectors || connectors.length === 0) {
+    if (!connectors || connectors.length === 0) {
       next(null, {
         code: 500
       });
@@ -36,9 +36,7 @@ class Handler {
       host: res.host,
       port: res.clientPort
     });
-  };
+  }
 }
 
-module.exports = (app) => {
-	return new Handler(app);
-};
+module.exports = app => new Handler(app);

@@ -5,7 +5,6 @@
  */
 const dispatcher = require('../utils/dispatcher');
 const BaseResult = require('../lib/baseResult');
-const Code = require('../lib/code');
 
 class UserController {
   constructor(app) {
@@ -46,7 +45,6 @@ class UserController {
    * @param next
    */
   login(req, res, next) {
-    console.log('\n\n\n~~~~~~~~', this, '~~~~~~~\n\n\n')
     const username = req.body.username;
     const password = req.body.password;
     const connectors = this.app.getServersByType('connector');
@@ -63,7 +61,7 @@ class UserController {
       if (err) {
         return next(err);
       }
-      return res.json(BaseResult.create(Code.SUCCESS, '成功', resp));
+      return res.json(BaseResult.create(BaseResult.CODE.SUCCESS, '成功', resp));
     });
   }
 }

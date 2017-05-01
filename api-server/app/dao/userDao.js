@@ -51,9 +51,10 @@ function encrypt(password, salt) {
 
 class UserDao {
 
-	constructor(app) {
-		this.app = app;
-	}
+  constructor(app) {
+    this.app = app;
+  }
+
   /**
    * check password
    *
@@ -62,7 +63,7 @@ class UserDao {
    * -- {String} password 密码
    * -- {String} checkPassword 待检查密码
    */
-  checkPassword(opts) {
+  static checkPassword(opts) {
     return encrypt(opts.checkPassword, opts.salt)
       .then(encryptedPassword => encryptedPassword === opts.password);
   }
@@ -74,13 +75,13 @@ class UserDao {
    * -- {String} username 账号
    * -- {String} password 密码
    */
-	create(opts) {
-		const app = this.app;
-		let salt;
-		return generateSalt()
-      // 生成密码
+  create(opts) {
+    const app = this.app;
+    let salt;
+    return generateSalt()
+    // 生成密码
       .then((result) => {
-		    salt = result;
+        salt = result;
         return encrypt(opts.password, result);
       })
       .then((password) => {
@@ -96,7 +97,7 @@ class UserDao {
         };
         return app.get('dbClient').queryAsync(sql, args);
       });
-	}
+  }
 
   /**
    * 根据用户名查询用户
@@ -105,7 +106,8 @@ class UserDao {
    */
   getByUsername(username) {
     const app = this.app;
-    return app.get('dbClient').queryAsync('SELECT id, username, password, salt FROM t_users WHERE username=?', username)
+    return app.get('dbClient')
+      .queryAsync('SELECT id, username, password, salt FROM t_users WHERE username=?', username)
       .then(result => (result[0]));
   }
 }

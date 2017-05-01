@@ -5,6 +5,7 @@
  */
 const BaseResult = require('../lib/baseResult');
 const UserDao = require('../dao/userDao');
+const TokenUtil = require('../utils/tokenUtil');
 
 class UserService {
   constructor(app) {
@@ -50,19 +51,33 @@ class UserService {
         if (!user) {
           throw BaseResult.USER_NOT_EXIST;
         }
-        // 校验密码
-        return that.userDao.checkPassword({
-          salt: user.salt,
-          password: user.password,
-          checkPassword: opts.password
+        return user;
+      })
+      // 校验密码
+      .then(user => UserDao.checkPassword({
+        salt: user.salt,
+        password: user.password,
+        checkPassword: opts.password
+      })
+        .then((isSame) => {
+          if (!isSame) {
+            throw BaseResult.ERR_PASSWORD;
+          }
+          return user;
         })
-          .then((isSame) => {
-            if (!isSame) {
-              throw BaseResult.ERR_PASSWORD;
-            }
-            return user;
-          });
-      });
+      )
+        // 生成签名
+        .then(user => TokenUtil.createToken({
+          id: user.id,
+          nick: user.nick,
+          username: user.username
+        })
+          .then(token => ({
+            token,
+            id: user.id,
+            nick: user.nick,
+            username: user.username
+          })));
   }
 }
 

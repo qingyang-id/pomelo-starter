@@ -1,11 +1,6 @@
-module.exports = (app) => {
-	return new ChatRemote(app);
-};
-
-const ChatRemote = function(app) {
+const ChatRemote = function (app) {
   this.app = app;
   this.channelService = app.get('channelService');
-  this.chatService = app.get('chatService');
 };
 
 /**
@@ -17,7 +12,7 @@ const ChatRemote = function(app) {
  * @param {boolean} flag channel parameter
  *
  */
-ChatRemote.prototype.add = function(uid, sid, name, flag, cb) {
+ChatRemote.prototype.add = function (uid, sid, name, flag, cb) {
   const channel = this.channelService.getChannel(name, flag);
   const username = uid.split('*')[0];
   const param = {
@@ -26,7 +21,7 @@ ChatRemote.prototype.add = function(uid, sid, name, flag, cb) {
   };
   channel.pushMessage(param);
 
-  if(!!channel) {
+  if (channel) {
     channel.add(uid, sid);
   }
 
@@ -42,13 +37,13 @@ ChatRemote.prototype.add = function(uid, sid, name, flag, cb) {
  * @return {Array} users uids in channel
  *
  */
-ChatRemote.prototype.get = function(name, flag) {
+ChatRemote.prototype.get = function (name, flag) {
   let users = [];
   const channel = this.channelService.getChannel(name, flag);
-  if(!!channel) {
+  if (channel) {
     users = channel.getMembers();
   }
-  for(let i = 0; i < users.length; i++) {
+  for (let i = 0; i < users.length; i += 1) {
     users[i] = users[i].split('*')[0];
   }
   return users;
@@ -62,10 +57,10 @@ ChatRemote.prototype.get = function(name, flag) {
  * @param {String} name channel name
  *
  */
-ChatRemote.prototype.kick = function(uid, sid, name, cb) {
+ChatRemote.prototype.kick = function (uid, sid, name, cb) {
   const channel = this.channelService.getChannel(name, false);
   // leave channel
-  if(!!channel) {
+  if (channel) {
     channel.leave(uid, sid);
   }
   const username = uid.split('*')[0];
@@ -76,3 +71,5 @@ ChatRemote.prototype.kick = function(uid, sid, name, cb) {
   channel.pushMessage(param);
   cb();
 };
+
+module.exports = app => new ChatRemote(app);

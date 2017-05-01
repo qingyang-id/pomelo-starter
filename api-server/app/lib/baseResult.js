@@ -47,19 +47,26 @@ class BaseResult {
 
 module.exports = BaseResult;
 
+BaseResult.CODE = Code;
 // 通用错误信息
-BaseResult.SUCCESS =  BaseResult.create(Code.SUCCESS,'成功');
-BaseResult.FAILED = BaseResult.create(Code.FAIL,'失败');
-BaseResult.ERR_SERVER = BaseResult.create(Code.ERR_SERVER,'系统错误，请刷新重试，若多次出现请联系客服');
-BaseResult.ERR_TOKEN_EXPIRE = BaseResult.create(Code.TOKEN_EXPIRE,'token过期');
+BaseResult.SUCCESS = BaseResult.create(Code.SUCCESS, '成功');
+BaseResult.FAILED = BaseResult.create(Code.FAIL, '失败');
+BaseResult.ERR_SERVER = BaseResult.create(Code.ERR_SERVER, '系统错误，若多次出现请联系客服');
+BaseResult.TOKEN_EXPIRE = BaseResult.create(Code.TOKEN_EXPIRE, 'token失效');
+BaseResult.TOKEN_REQUIRE = BaseResult.create(Code.TOKEN_REQUIRE, 'token缺失');
+BaseResult.ERR_CREATE_TOKEN = BaseResult.create(Code.ERR_CREATE_TOKEN, '生成token失败');
+BaseResult.ERR_PHPNE = BaseResult.create(Code.ERR_PHONE, '手机号码不正确');
 
 // 账号相关
-BaseResult.USER_NOT_EXIST = BaseResult.create(Code.USER.USER_NOT_EXIST,'用户不存在');
-BaseResult.USERNAME_EXIST = BaseResult.create(Code.USER.USERNAME_EXIST,'用户名已存在');
-BaseResult.ERR_PASSWORD = BaseResult.create(Code.USER.ERR_PASSWORD,'用户名或密码不正确');
-BaseResult.ERR_REPEAT_LOGIN = BaseResult.create(Code.USER.ERR_REPEAT_LOGIN,'重复登录');
-BaseResult.ERR_REPEAT_LOGOUT = BaseResult.create(Code.USER.ERR_REPEAT_LOGOUT,'重复退出');
+BaseResult.USER_NOT_EXIST = BaseResult.create(Code.USER.USER_NOT_EXIST, '用户不存在');
+BaseResult.USERNAME_EXIST = BaseResult.create(Code.USER.USERNAME_EXIST, '用户名已存在');
+BaseResult.ERR_PASSWORD = BaseResult.create(Code.USER.ERR_PASSWORD, '用户名或密码不正确');
+BaseResult.ERR_REPEAT_LOGIN = BaseResult.create(Code.USER.ERR_REPEAT_LOGIN, '重复登录');
+BaseResult.ERR_REPEAT_LOGOUT = BaseResult.create(Code.USER.ERR_REPEAT_LOGOUT, '重复退出');
+
+// im相关
+BaseResult.ERR_CREATE_IM_SIG = BaseResult.create(Code.USER.ERR_CREATE_IM_SIG, '生成腾讯im令牌失败');
 
 // 直播相关
-BaseResult.ERR_LIVE_NO_AV_ROOM_ID = BaseResult.create(Code.ROOM.ERR_LIVE_NO_AV_ROOM_ID,'用户没有av房间ID');
-BaseResult.ERR_USER_NO_LIVE = BaseResult.create(Code.ROOM.ERR_USER_NO_LIVE,'用户没有在直播');
+BaseResult.ERR_LIVE_NO_AV_ROOM_ID = BaseResult.create(Code.ROOM.ERR_LIVE_NO_AV_ROOM_ID, '用户没有av房间ID');
+BaseResult.ERR_USER_NO_LIVE = BaseResult.create(Code.ROOM.ERR_USER_NO_LIVE, '用户没有在直播');

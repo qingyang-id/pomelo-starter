@@ -14,11 +14,16 @@ class MysqlPool {
   constructor(app) {
     this.app = app;
   }
-  /*
+
+  /**
    * Create mysql connection pool.
+   *
+   * @param dbName
+   *
+   * @returns {Pool}
    */
-  createMysqlPool(db = 'mysql') {
-    const mysqlConfig = this.app.get('globalConfig')[db];
+  createMysqlPool(dbName = 'mysql') {
+    const mysqlConfig = this.app.get('globalConfig')[dbName];
     return mysql.createPool(mysqlConfig);
   }
 }

@@ -8,14 +8,18 @@ module.exports = {
   FAIL: 1, // 失败
   ERR_SERVER: 500, // 系统错误
   TOKEN_INVALID: 1001, // token不正确
-  TOKEN_EXPIRE: 1002, // token过期
+  TOKEN_EXPIRE: 401, // token过期
+  ERR_PHONE: 1003, // 手机号码不正确
+  ERR_CREATE_TOKEN: 1004, // 创建token失败
+  TOKEN_REQUIRE: 1005, // token缺失
 
   USER: {
     USER_NOT_EXIST: 1100, // 用户不存在
     USERNAME_EXIST: 1101, // 用户名已存在
-    ERR_PASSWORD: 1101, // 用户名或密码不正确
-    ERR_REPEAT_LOGIN: 1101, // 重复登录
-    ERR_REPEAT_LOGOUT: 1101, // 重复退出
+    ERR_PASSWORD: 1102, // 用户名或密码不正确
+    ERR_REPEAT_LOGIN: 1103, // 重复登录
+    ERR_REPEAT_LOGOUT: 1104, // 重复退出
+    ERR_CREATE_IM_SIG: 1105, // 生成腾讯im令牌失败
   },
 
   ROOM: {

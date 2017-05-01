@@ -3,10 +3,13 @@
  * @author yq
  * @date 2017/4/23 下午6:01
  */
-const UserController = require('../../../controllers/userController');
+const V1Router = require('./v1');
 
-module.exports = (app, http) => {
-  const userCtrl = new UserController(app);
+module.exports = (app, express) => {
+  const router = express.Router();
+
   // v1版本路由
-  http.post('/v1/token', userCtrl.login.bind(userCtrl));
+  router.use('/v1', V1Router(app, express));
+
+  return router;
 };

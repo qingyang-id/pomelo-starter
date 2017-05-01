@@ -23,7 +23,7 @@ class UserRemote {
     this.userService.register({ username, password })
       .then(() => cb())
       .catch(cb);
-  };
+  }
   /**
    * Login
    *
@@ -34,11 +34,9 @@ class UserRemote {
    */
   login(username, password, cb) {
     this.userService.login({ username, password })
-      .then((result) => cb(null, result))
+      .then(result => cb(null, result))
       .catch(cb);
-  };
+  }
 }
 
-module.exports = (app) => {
-  return new UserRemote(app);
-};
+module.exports = app => new UserRemote(app);
