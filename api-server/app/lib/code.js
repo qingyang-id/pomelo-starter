@@ -9,9 +9,9 @@ module.exports = {
   ERR_SERVER: 500, // 系统错误
   TOKEN_INVALID: 1001, // token不正确
   TOKEN_EXPIRE: 401, // token过期
-  ERR_PHONE: 1003, // 手机号码不正确
-  ERR_CREATE_TOKEN: 1004, // 创建token失败
-  TOKEN_REQUIRE: 1005, // token缺失
+  ERR_PHONE: 1004, // 手机号码不正确
+  ERR_CREATE_TOKEN: 1002, // 创建token失败
+  TOKEN_REQUIRE: 1003, // token缺失
 
   USER: {
     USER_NOT_EXIST: 1100, // 用户不存在

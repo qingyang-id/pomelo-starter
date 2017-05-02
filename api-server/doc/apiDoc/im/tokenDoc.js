@@ -3,12 +3,14 @@
  */
 
 /**
- * @api {get} /v1/im/tokens 获取签名信息
+ * @apiIgnore {get} /v1/im/tokens 获取签名信息
  * @apiDescription 签名使用过程中不排除失效的可能性，前端最好做一下失效处理，失效时，从接口重新拿取新的签名信息
  * @apiVersion 1.0.0
  * @apiName getSig
  * @apiGroup imToken
  * @apiPermission 登录用户
+ *
+ * @apiUse requireToken
  *
  * @apiExample {bash} 请求样例：
  *    curl -i https://www.dlkj.com/v1/im/token
