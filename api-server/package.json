@@ -12,9 +12,9 @@
   "apidoc": {
     "name": "API文档",
     "version": "1.0.0",
-    "description": "网站的所有API文档",
+    "description": "网站API服务文档",
     "title": "API手册",
-    "url": "http://www.dlkj.com/",
+    "url": "http://www.dlkj.com",
     "header": {
       "title": "文档说明",
       "filename": "doc/apiDoc/header.md"
