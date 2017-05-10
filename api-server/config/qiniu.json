@@ -1,8 +1,0 @@
-{
-	"access_key": "zQKgGIPr-OBfpGn82vgqGF8iPeZO6qwO9LMtaJsk",
-	"secret_key": "5FFoL8KBg-9l1AMEoaXIuIjKbqYlgn0eJ_y7LNhn",
-	"spaces": {
-		"sounds": "http://7xkjiu.media1.z0.glb.clouddn.com/"
-	},
-	"pipeline": "soundsConcat"
-}

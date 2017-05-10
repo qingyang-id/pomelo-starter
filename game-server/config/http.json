@@ -1,0 +1,18 @@
+{
+  "development": {
+    "appHttp": [
+      {
+        "host": "127.0.0.1",
+        "port": 8001
+      }
+    ]
+  },
+  "production": {
+    "appHttp": [
+      {
+        "host": "127.0.0.1",
+        "port": 8001
+      }
+    ]
+  }
+}
