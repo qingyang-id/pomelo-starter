@@ -1,4 +1,4 @@
-cd ./api-server && npm install -d
+cd ./game-server && npm install -d
 echo '============   api-server npm installed ============'
 cd ..
 cd ./web-server && npm install -d
