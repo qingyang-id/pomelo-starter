@@ -30,7 +30,7 @@
     "moment": "^2.18.1",
     "mongoose": "^4.9.6",
     "mysql": "^2.13.0",
-    "pomelo": "^2.2.5",
+    "pomelo": "^2.2.7",
     "pomelo-http": "^0.0.7",
     "pomelo-logger": "^0.1.7",
     "request": "^2.81.0",
