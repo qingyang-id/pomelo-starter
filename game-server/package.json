@@ -21,7 +21,7 @@
     }
   },
   "dependencies": {
-    "async": "^2.4.0",
+    "async": "^2.6.4",
     "bluebird": "^3.5.0",
     "crc": "^3.4.4",
     "ioredis": "^2.5.0",
