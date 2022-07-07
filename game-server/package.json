@@ -27,7 +27,7 @@
     "ioredis": "^2.5.0",
     "jsonwebtoken": "^7.4.0",
     "lodash": "^4.17.4",
-    "moment": "^2.18.1",
+    "moment": "^2.29.4",
     "mongoose": "^4.9.6",
     "mysql": "^2.13.0",
     "pomelo": "^2.2.5",
