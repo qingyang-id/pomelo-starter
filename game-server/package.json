@@ -25,7 +25,7 @@
     "bluebird": "^3.5.0",
     "crc": "^3.4.4",
     "ioredis": "^2.5.0",
-    "jsonwebtoken": "^7.4.0",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "mongoose": "^4.9.6",
